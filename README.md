@@ -95,6 +95,10 @@
 
 官方用户扫描目录是 `/Users/zrz_mac/.agents/skills/`，其中每个技能目录直接链接到上述分类、主题目录中的技能实体；不要只链接主题目录。技能实体嵌套多少层，不改变扫描链接的平铺结构。`/Users/zrz_mac/.codex/skills/` 根目录只保留 `common/`、`custom/`、`disposable/`、`README.md` 和隐藏的内置 `.system/`；不要在这里添加技能软链接。扫描软链接只放在 `/Users/zrz_mac/.agents/skills/` 中，软链接不复制技能内容。
 
+### 技能目录变更时同步维护扫描链接
+
+凡是在任务中新增、安装、移动、重命名或删除技能，都要同时检查并更新 `/Users/zrz_mac/.agents/skills/` 下该技能对应的直接链接，让扫描入口指向技能当前所在的实体目录。新增技能时按技能名创建链接；移动或重命名时只更新确认属于该技能的链接；删除技能时只删除指向该技能实体的链接。链接已存在时先检查目标：指向同一实体就复用，指向其他实体或是普通文件时不得覆盖。链接维护属于技能变更的完成步骤，应在任务完成前核验链接目标，并同步更新相关分类 README 的布局或索引说明。
+
 现有技能归类：
 
 - `common/agent-power/consciousness-council/`、`common/agent-power/pi-agent/`、`common/agent-power/ponytail/`
