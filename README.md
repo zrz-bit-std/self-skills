@@ -24,6 +24,13 @@
 
 本节是持久偏好的一部分；下文中的安装流程按这些默认去向执行。
 
+## 本地与远程电脑的默认指代（2026-10-19）
+
+- “本地电脑”“本机”“我的 Mac”“在这个电脑上”以及没有远程语境的新任务，默认指当前运行 Codex 的本地 Mac。
+- “服务器”“另一台电脑”“Linux 电脑”“我的实验平台”，以及 Gazebo、Ubuntu LSTE 的实际实验工作语境，默认指 `ssh -4 zrz@bit1010.local` 对应的远程 Linux 主机。遇到这些语境时读取并使用 [bit1010-ssh](custom/agent-power/bit1010-ssh/SKILL.md)。纯概念问答无需连接。
+- 同一远程任务中的“继续”“再检查”等后续指令延续远程目标；用户明确指定本地或其他主机时，服从本次指定。不要把早先讨论过 SSH 当成以后所有任务都在远程执行。
+- 远程任务通过终端 SSH 实际执行；连接失败时不改在本地执行远程变更。技能中的连接资料和 sudo 状态不等于永久免密码管理员授权。
+
 ## 按主题目录查找
 
 每次检查某个分类时，先查看其中的目录名称，按任务含义选择最相关的主题目录，再检查该目录内各技能的 `name`、`description` 和适用范围。目录名是查找线索，不是技能适用性的最终判断依据。
@@ -34,10 +41,14 @@
 | --- | --- |
 | `common/paper-writing/` | 论文检索、精读与翻译、综述、创新点与研究空白、写作润色和投稿 |
 | `common/agent-power/` | Agent 工具、讨论编排与编码工作方式 |
+| `custom/agent-power/` | 用户定制的 Agent 执行工作流，包括本地 Mac 与 bit1010 远程实验平台的任务路由 |
+| `custom/robotics/` | 用户定制的 LSTE 实验执行规范（bit1010 上的 Gazebo/ROS 实验启停、判定与故障处理） |
 | `common/browser/` | 网页读取与信息采集、浏览器交互、登录、点击和表单操作 |
+| `common/knowledge-management/` | Notion 知识整理、会议准备、资料汇总、需求任务拆解与进度管理 |
 | `common/skill-management/` | 技能发现、来源核验、安装注册、工作流技能化与维护 |
 | `common/ppt-skills/` | PPT 制作相关工具、科研图表、示意图、海报与文档材料处理 |
 | `common/ppt-writing/` | PPT、PowerPoint 演示文稿的生成、编辑与增强 |
+| `common/robotics/` | Gazebo 仿真、ROS 2 开发、机器人建模与传感器配置 |
 
 新增主题目录时使用能描述用途的名称；中英文目录名都可以按任务语义匹配。有多项任务时可检查多个相关主题。
 
@@ -101,11 +112,14 @@
 
 现有技能归类：
 
+- `custom/agent-power/bit1010-ssh/`、`custom/agent-power/sparkling/`（sparkling 仅在用户明确调用时生效）
 - `common/agent-power/consciousness-council/`、`common/agent-power/pi-agent/`、`common/agent-power/ponytail/`
 - `common/browser/slidepad/`
+- `common/knowledge-management/notion-knowledge-capture/`、`common/knowledge-management/notion-meeting-intelligence/`、`common/knowledge-management/notion-research-documentation/`、`common/knowledge-management/notion-spec-to-implementation/`
 - `common/paper-writing/citation-management/`、`common/paper-writing/literature-review/`、`common/paper-writing/nature-polishing/`、`common/paper-writing/nature-writing/`、`common/paper-writing/paper-lookup/`、`common/paper-writing/scientific-writing/`
 - `common/ppt-skills/docx/`、`common/ppt-skills/pdf/`、`common/ppt-skills/pptx-posters/`、`common/ppt-skills/scientific-schematics/`、`common/ppt-skills/scientific-visualization/`、`common/ppt-skills/xlsx/`
 - `common/ppt-writing/ppt-master/`
+- `common/robotics/gazebo-sim/`
 - `common/skill-management/autoskill/`、`common/skill-management/find-skills/`
 
 新增主题目录时同步更新本文件与 `common/README.md` 的主题索引；新增、移动、删除技能时更新相关 README 中的布局说明。今后新增、移动或删除技能时同步维护 `/Users/zrz_mac/.agents/skills/` 中的扫描链接；只替换确认属于该技能的链接，不覆盖无关目录。不要在 `common/`、`custom/`、`disposable/` 分类目录本身添加 `SKILL.md`，分类目录和主题目录都不是技能；只有真正的技能目录才包含 `SKILL.md`。

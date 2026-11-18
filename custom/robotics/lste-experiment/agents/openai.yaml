@@ -1,0 +1,6 @@
+interface:
+  display_name: "LSTE 实验执行"
+  short_description: "在 bit1010 上跑 LSTE 实验：健康检查、启停等待、成功判定与常见故障处理"
+
+policy:
+  allow_implicit_invocation: true

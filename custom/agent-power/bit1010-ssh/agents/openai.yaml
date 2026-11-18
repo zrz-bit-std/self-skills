@@ -1,0 +1,6 @@
+interface:
+  display_name: "bit1010 远程实验平台"
+  short_description: "通过 SSH 操作 bit1010 Linux 实验平台，并区分本地 Mac 任务"
+
+policy:
+  allow_implicit_invocation: true

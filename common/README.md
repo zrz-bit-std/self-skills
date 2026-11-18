@@ -10,10 +10,14 @@
 | --- | --- | --- |
 | `agent-power/` | 增强 agent 的执行、思考、编排与工作流构建能力 | 配置 agent 工具链、设计工作流、多角度讨论、简化编码方案 |
 | `browser/` | 网页读取、信息采集、浏览器交互与登录后操作 | 打开页面、采集网页信息、点击控件、填写表单、处理动态网页 |
+| `knowledge-management/` | Notion 知识与协作工作流 | 对话转知识页、会议准备、多页资料汇总、需求转计划与任务 |
 | `paper-writing/` | 与论文有关的研究和写作全流程 | 查论文、读论文、文献翻译、综述、研究空白和创新点、论文写作与润色 |
 | `ppt-skills/` | PPT 制作相关工具、视觉素材与文档处理 | 科研图表、示意图、PowerPoint 海报、整理 Word/Excel/PDF 材料 |
 | `ppt-writing/` | 已有的整套演示文稿生成、编辑与增强工作流 | 生成可编辑 PPTX、重建页面、填充模板、优化成品演示文稿 |
+| `robotics/` | Gazebo 仿真与 ROS 2 机器人开发 | 建 SDF 世界、配物理与传感器插件、ros_gz_bridge 桥接、排查模型穿模或传感器不发布 |
 | `skill-management/` | 技能发现、来源核验、安装、注册及维护 | 现有技能不适用时搜索技能、检查重复、记录来源、维护扫描链接 |
+
+用户定制的 Agent 工作流保存在同主题的 [`../custom/agent-power/`](../custom/README.md)：[bit1010-ssh](../custom/agent-power/bit1010-ssh/SKILL.md) 负责本地 Mac 与远程 Linux 实验平台的任务位置判断和 SSH 执行。实体位于 `custom/`，仍按 `custom > common > disposable` 选择。
 
 ## agent-power：增强 agent 和构建工作流
 
@@ -36,6 +40,19 @@
 | [slidepad](browser/slidepad/SKILL.md) | 在 Slidepad 中进行交互式或需要登录的网页操作，例如读取页面、点击控件、填写表单。 |
 
 任务示例：“从这个网站收集信息”“读取登录后的页面”“帮我填写网页表单”。
+
+## knowledge-management：Notion 知识与协作工作流
+
+这里收录以 Notion 为载体的知识整理、会议准备、研究资料汇总和任务规划技能。使用这些技能操作 Notion 前，需要已连接并获授权的 Notion 工具；安装技能本身不授予工作区访问权限。
+
+| 当前技能 | 具体功能 |
+| --- | --- |
+| [notion-knowledge-capture](knowledge-management/notion-knowledge-capture/SKILL.md) | 将对话、笔记和决策整理为结构化知识页、操作指南或 FAQ，并关联已有页面。 |
+| [notion-meeting-intelligence](knowledge-management/notion-meeting-intelligence/SKILL.md) | 汇总 Notion 中的会议背景，准备议程、预读材料和行动项。 |
+| [notion-research-documentation](knowledge-management/notion-research-documentation/SKILL.md) | 检索和汇总多个 Notion 来源，生成带来源链接的简报、对比或报告。 |
+| [notion-spec-to-implementation](knowledge-management/notion-spec-to-implementation/SKILL.md) | 将需求文档转为实施计划、关联任务和进度跟踪。 |
+
+以上技能来自 OpenAI 官方 `openai/skills` 仓库，具体版本见各技能目录中的 `INSTALL_SOURCE.md`。
 
 ## paper-writing：所有论文相关工作
 
@@ -82,6 +99,18 @@
 任务示例：“生成一套课程 PPT”“按参考页面重建幻灯片”“填充这个 PPT 模板”“优化现有演示文稿”。
 
 新安装的通用 PPT 工具默认归入 `ppt-skills/`；完整演示文稿工作流可归入已有的 `ppt-writing/`。
+
+## robotics：Gazebo 仿真与 ROS 2 机器人开发
+
+这里收录机器人仿真与 ROS 2 开发相关技能，包括 Gazebo 世界和模型搭建、物理参数、传感器插件、`ros_gz_bridge` 桥接以及仿真问题排查。Gazebo Classic（`gazebo` 命令）已于 2025 年 1 月停止维护，此目录以新版 `gz sim`（Harmonic）为主。
+
+| 当前技能 | 具体功能 |
+| --- | --- |
+| [gazebo-sim](robotics/gazebo-sim/SKILL.md) | Gazebo Harmonic（Gazebo 8）仿真：SDF 世界与物理引擎、相机/激光雷达/IMU 插件、URDF 与 SDF 模型、`ros_gz_bridge` 与模型生成，并附 CLI 诊断和模型穿地、飞走、传感器不发布等异常排查。 |
+
+任务示例：“搭一个带激光雷达的仿真世界”“机器人陷进地面怎么排查”“把 Gazebo 话题桥接到 ROS 2”。
+
+技能中的 `gz sim`、`ros_gz_*` 命令需要在装有 Gazebo 的 Linux 环境执行；涉及实验平台的运行时，按 `custom/agent-power/bit1010-ssh` 的规则在远程主机操作，本机只编写文件。
 
 ## skill-management：发现、安装和维护技能
 
